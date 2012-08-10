@@ -31,11 +31,12 @@ var _ie         = /MSIE/.test(navigator.userAgent),
 
 // msgpack.pack
 function msgpackpack(data,       // @param Mix:
-                     format) { // @param String(= false):
-                                 // @return ByteArray/BinaryString/false:
+                     format) {   // @param String('string'|'base64'):
+                                 // @return ByteArray/BinaryString/Base64String/false:
                                  //     false is error return
-    //  [1][mix to String]    msgpack.pack({}, true) -> "..."
-    //  [2][mix to ByteArray] msgpack.pack({})       -> [...]
+    //  [1][mix to String]    msgpack.pack({}, 'string')    -> "..."
+    //  [2][mix to ByteArray] msgpack.pack({})              -> [...]
+    //  [3][mix to Base64String] msgpack.pack({}, 'base64') -> "..." (base64string)
 
     _error = 0;
 
